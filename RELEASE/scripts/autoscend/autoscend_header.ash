@@ -35,12 +35,13 @@ boolean LX_joinPirateCrew();
 boolean LX_fledglingPirateIsYou();
 boolean LX_unlockBelowdecks();
 boolean LX_pirateQuest();
-boolean LX_acquireLegendaryEpicWeapon();
+boolean LX_acquireEpicWeapon();
 boolean LX_hardcoreFoodFarm();
 boolean LX_melvignShirt();
 boolean LX_attemptPowerLevel();
 boolean LX_attemptFlyering();
 boolean LX_bitchinMeatcar();
+boolean LX_unlockDesert();
 boolean LX_meatMaid();
 boolean LX_craftAcquireItems();
 boolean LX_freeCombats();
@@ -70,19 +71,25 @@ boolean L2_mosquito();
 boolean L3_tavern();
 
 boolean L4_batCave();
+
 boolean L5_haremOutfit();
 boolean L5_findKnob();
 boolean L5_goblinKing();
 boolean L5_getEncryptionKey();
+boolean L5_slayTheGoblinKing();
+
 boolean L6_dakotaFanning();
 boolean L6_friarsGetParts();
-boolean L8_trapperStart();
+
 boolean L7_crypt();
+
+boolean L8_trapperStart();
 boolean L8_trapperGround();
 boolean L8_trapperNinjaLair();
 boolean L8_trapperExtreme();
 boolean L8_trapperGroar();
 boolean L8_trapperQuest();
+
 boolean L9_chasmBuild();
 boolean L9_highLandlord();
 boolean L9_aBooPeak();
@@ -103,7 +110,14 @@ boolean[location] shenZonesToAvoidBecauseMaybeSnake();					//Defined in autoscen
 boolean shenShouldDelayZone(location loc);								//Defined in autoscend/auto_quest_level_11.ash
 
 boolean LX_unlockHiddenTemple();
+boolean LX_unlockManorSecondFloor();
+boolean LX_unlockHauntedLibrary();
+boolean LX_unlockHauntedBilliardsRoom();
 boolean LX_spookyravenManorFirstFloor();
+boolean LX_danceWithLadySpookyraven();
+boolean LX_getLadySpookyravensFinestGown();
+boolean LX_getLadySpookyravensDancingShoes();
+boolean LX_getLadySpookyravensPowderPuff();
 boolean LX_spookyravenManorSecondFloor();
 boolean L11_palindome();
 boolean L11_hiddenCity();
@@ -117,6 +131,7 @@ boolean L11_mcmuffinDiary();
 boolean L11_unlockHiddenCity();
 boolean L11_hiddenCityZones();
 boolean L11_talismanOfNam();
+boolean L11_shenStartQuest();
 boolean L11_shenCopperhead();
 boolean L11_ronCopperhead();
 boolean L11_redZeppelin();
@@ -171,6 +186,7 @@ boolean L12_sonofaFinish();									//Defined in autoscend/auto_quest_level_12.a
 boolean L12_gremlins();										//Defined in autoscend/auto_quest_level_12.ash
 boolean L12_orchardFinalize();								//Defined in autoscend/auto_quest_level_12.ash
 boolean L12_finalizeWar();									//Defined in autoscend/auto_quest_level_12.ash
+boolean L12_clearBattlefield();
 
 //Defined in autoscend/auto_quest_level_13.ash
 boolean LX_getDigitalKey();
@@ -396,7 +412,6 @@ location[int] ListInsertInorder(location[int] list, location what);//Defined in 
 int ListFind(location[int] list, location what);			//Defined in autoscend/auto_list.ash
 int ListFind(location[int] list, location what, int idx);	//Defined in autoscend/auto_list.ash
 location ListOutput(location[int] list);					//Defined in autoscend/auto_list.ash
-void resetThisLoop();										//Defined in autoscend/auto_util.ash
 int [item] auto_get_campground();								//Defined in autoscend/auto_util.ash
 boolean basicAdjustML();									//Defined in autoscend/auto_util.ash
 boolean beatenUpResolution();								//Defined in autoscend.ash
@@ -765,7 +780,6 @@ boolean getSpaceJelly();					//Defined in autoscend/iotms/auto_mr2017.ash
 int horseCost();											//Defined in autoscend/iotms/auto_mr2017.ash
 string horseNormalize(string horseText); // Defined in autoscend/auto_mr2017.ash
 boolean getHorse(string type);								//Defined in autoscend/iotms/auto_mr2017.ash
-void horseDefault(); // Defined in autoscend/auto_mr2017.ash
 void horseMaintain(); // Defined in autoscend/auto_mr2017.ash
 void horseNone(); // Defined in autoscend/auto_mr2017.ash
 void horseNormal(); // Defined in autoscend/auto_mr2017.ash
@@ -983,6 +997,8 @@ boolean startArmorySubQuest();								//Defined in autoscend/auto_util.ash
 boolean startGalaktikSubQuest();							//Defined in autoscend/auto_util.ash
 boolean startMeatsmithSubQuest();							//Defined in autoscend/auto_util.ash
 boolean startHippyBoatmanSubQuest();						//Defined in autoscend/auto_util.ash
+boolean finishMeatsmithSubQuest();						//Defined in autoscend/auto_util.ash
+boolean finishGalaktikSubQuest();						//Defined in autoscend/auto_util.ash
 string statCard();											//Defined in autoscend/auto_util.ash
 int stomach_left();											//Defined in autoscend/auto_util.ash
 boolean theSource_buySkills();								//Defined in autoscend/auto_theSource.ash
@@ -1176,7 +1192,6 @@ boolean bat_consumption(); // Defined in autoscend/auto_batpath.ash
 boolean bat_skillValid(skill sk); // Defined in autoscend/auto_batpath.ash
 boolean bat_tryBloodBank(); // Defined in autoscend/auto_batpath.ash
 boolean bat_wantHowl(location loc); // Defined in autoscend/auto_batpath.ash
-boolean bat_formNone(); // Defined in autoscend/auto_batpath.ash
 boolean bat_formWolf(boolean speculative); // Defined in autoscend/auto_batpath.ash
 boolean bat_formWolf(); // Defined in autoscend/auto_batpath.ash
 boolean bat_formMist(boolean speculative); // Defined in autoscend/auto_batpath.ash
@@ -1219,7 +1234,6 @@ boolean L13_sorceressDoorLowKey(); // Defined in autoscend/paths/low_key_summer.
 boolean LX_lowkeySummer(); // Defined in autoscend/paths/low_key_summer.ash
 
 element currentFlavour(); // Defined in autoscend/auto_util.ash
-void resetFlavour(); // Defined in autoscend/auto_util.ash
 boolean setFlavour(element ele); // Defined in autoscend/auto_util.ash
 boolean executeFlavour(); // Defined in autoscend/auto_util.ash
 boolean autoFlavour(location place); // Defined in autoscend/auto_util.ash

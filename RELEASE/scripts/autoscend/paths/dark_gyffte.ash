@@ -47,15 +47,7 @@ boolean bat_wantHowl(location loc)
 	return false;
 }
 
-boolean bat_formNone()
-{
-	if(my_class() != $class[Vampyre]) return false;
-	if(get_property("auto_bat_desiredForm") != "")
-	{
-		set_property("auto_bat_desiredForm", "");
-	}
-	return true;
-}
+
 
 boolean bat_formWolf(boolean speculative)
 {

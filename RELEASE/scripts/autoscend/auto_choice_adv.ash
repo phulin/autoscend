@@ -374,6 +374,17 @@ boolean auto_run_choice(int choice, string page)
 				run_choice(5);
 			}
 			break;
+		case 1062: // Lots of Options (The Overgrown Lot)
+			if (get_property("questM04Galaktic") != "unstarted" && get_property("questM04Galaktic") != "finished" ) { // update once property is spaded
+				run_choice(1); // get flowers for the doc
+			} else {
+				if (available_choice_options() contains 5) {
+					run_choice(5); // get booze from map to a hidden booze cache
+				} else {
+					run_choice(3); // get booze
+				}
+			}
+			break;
 		case 1082: // The "Rescue" (post-Cake Lord in Madness Bakery)
 			run_choice(1);
 			break;

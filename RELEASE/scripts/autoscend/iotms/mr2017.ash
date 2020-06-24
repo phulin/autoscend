@@ -1557,11 +1557,6 @@ boolean getHorse(string type)
 	return true;
 }
 
-void horseDefault()
-{
-	set_property("auto_desiredHorse", "");
-}
-
 void horseMaintain()
 {
 	set_property("auto_desiredHorse", horseNormalize(get_property("_horsery")));
